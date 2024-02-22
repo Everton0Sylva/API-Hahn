@@ -12,15 +12,15 @@ namespace API.Service.Validators
     {
         public UserValidator()
         {
+            RuleFor(c => c.FullName)
+                .NotEmpty().WithMessage("Please enter the full name.")
+                .NotNull().WithMessage("Please enter the  full name.");
 
             RuleFor(c => c.Email)
                 .NotEmpty().WithMessage("Please enter the email.")
                 .NotNull().WithMessage("Please enter the email.");
 
-            RuleFor(c => c.Password)
-                .NotEmpty().WithMessage("Please enter the password.")
-                .NotNull().WithMessage("Please enter the password.");
-            RuleFor(c => c.ClientID)
+            RuleFor(c => c.Company)
                 .NotEmpty().WithMessage("Please enter the clientid.")
                 .NotNull().WithMessage("Please enter the clientid.");
         }
