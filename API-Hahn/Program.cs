@@ -23,6 +23,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddDbContext<MySqlContext>();
 
+builder.Services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
+builder.Services.AddScoped<IBaseService<User>, BaseService<User>>();
+
 builder.Services.AddSingleton(new MapperConfiguration(config =>
 {
 /*    config.CreateMap<CreateUserModel, User>();
