@@ -28,11 +28,15 @@ builder.Services.AddScoped<IBaseService<User>, BaseService<User>>();
 
 builder.Services.AddSingleton(new MapperConfiguration(config =>
 {
-/*    config.CreateMap<CreateUserModel, User>();
-    config.CreateMap<UpdateUserModel, User>();
-    config.CreateMap<User, UserModel>();*/
+    /*    config.CreateMap<CreateUserModel, User>();
+        config.CreateMap<UpdateUserModel, User>();
+        config.CreateMap<User, UserModel>();*/
 }).CreateMapper());
 
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 
 var app = builder.Build();
 
@@ -40,6 +44,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.UseCors("corsapp");
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();

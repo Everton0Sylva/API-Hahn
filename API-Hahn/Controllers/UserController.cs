@@ -47,7 +47,7 @@ namespace API_Hahn.Controllers
                     return true;
                 });
 
-                return new NoContentResult();
+                return Ok(true);
             }
 
             [HttpGet]
